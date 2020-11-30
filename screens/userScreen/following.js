@@ -1,0 +1,168 @@
+import React, { Component } from "react";
+import { Text, StyleSheet, View, FlatList, Image } from "react-native";
+import { Avatar, Icon, Input } from "react-native-elements";
+import global from "../../global";
+import { ScrollView } from "react-native-gesture-handler";
+
+const DATA = [
+  {
+    id: "1",
+    name: "faika560 jnh jdbnfuierbg uiguy ",
+    image: "https://placeimg.com/640/480/any"
+  },
+  {
+    id: "1",
+    name: "vikash_kumar702",
+    image: "https://placeimg.com/640/480/animals"
+  },
+  {
+    id: "1",
+    name: "sh1680a",
+    image: "https://placeimg.com/640/480/arch"
+  },
+  {
+    id: "1",
+    name: "royalnavghan",
+    image: "https://placeimg.com/640/480/nature"
+  },
+  {
+    id: "1",
+    name: "souravganguly",
+    image: "https://placeimg.com/640/480/people"
+  },
+  {
+    id: "1",
+    name: "nehasharma",
+    image: "https://placeimg.com/640/480/tech"
+  },
+  {
+    id: "1",
+    name: "shreyas41",
+    image: "https://placeimg.com/640/480/grayscale"
+  },
+  {
+    id: "1",
+    name: "dhvanibhanushali",
+    image: "https://placeimg.com/640/480/sepia"
+  }
+];
+export default class following extends Component {
+  static navigationOptions = {
+    title: "Following",
+    headerStyle: {
+      backgroundColor: "#fff"
+    },
+
+    headerTintColor: "#000",
+
+    headerTitleStyle: {
+      fontWeight: "bold"
+    }
+  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: DATA
+    };
+  }
+  render() {
+    return (
+      <View style={styles.bgContainer}>
+        <View>
+          <Input
+            placeholder="Search "
+            placeholderTextColor="#000"
+            inputContainerStyle={styles.inputFiedContainer}
+            keyboardType="default"
+            inputStyle={styles.inputText}
+          />
+        </View>
+
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={this.state.data}
+          renderItem={({ item: d }) => (
+            <View style={styles.flatlistContainer}>
+              <View style={styles.avatarContainer}>
+                <Avatar rounded size={70} source={{ uri: d.image }} />
+                <Text style={styles.nameText} numberOfLines={1}>
+                  {d.name}
+                </Text>
+              </View>
+              <View
+                style={{ flexDirection: "row", justifyContent: "flex-end" }}
+              >
+                <View style={styles.removeContainer}>
+                  <Text style={styles.removeText}>Following</Text>
+                </View>
+                <View>
+                  <Icon
+                    name="dots-horizontal"
+                    color="#000"
+                    type="material-community"
+                    size={30}
+                    iconStyle={{ marginHorizontal: 10, marginTop: 30 }}
+                  />
+                </View>
+              </View>
+            </View>
+          )}
+        />
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  bgContainer: {
+    flex: 1,
+    width: null
+  },
+  avatarContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    // marginHorizontal: 10,
+    marginTop: 10
+  },
+  nameText: {
+    fontSize: 16,
+    alignSelf: "center",
+    marginHorizontal: 10,
+    width: 150
+  },
+  removeText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    alignSelf: "center",
+    margin: 3
+  },
+  removeContainer: {
+    // width: 80,
+    borderColor: "gray",
+    borderWidth: 1,
+    borderRadius: 5,
+    height: 30,
+    alignSelf: "center"
+  },
+  flatlistContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginHorizontal: 10
+  },
+  inputText: {
+    fontWeight: "bold",
+    fontSize: 16,
+    color: "#000",
+    marginVertical: 6,
+    marginHorizontal: 16
+  },
+  inputFiedContainer: {
+    borderWidth: 1,
+    borderColor: "gray",
+    marginVertical: 20,
+    borderRadius: 20,
+    backgroundColor: "rgba(0,0,0,0.03)"
+    // marginTop: global.CONSTANT.STATUSBAR + 20
+  }
+});
